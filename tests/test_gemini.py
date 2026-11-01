@@ -49,13 +49,19 @@ class GeminiTests(unittest.TestCase):
         finally:
             provider.close()
 
-    def test_empty_response_is_rejected(self):
+    def test_empty_response_retains_usage_and_finish_reason(self):
         from google.genai import types
 
         provider = GeminiProvider("offline-test-key")
         try:
-            with patch.object(provider.client.models, "generate_content", return_value=types.GenerateContentResponse()):
-                with self.assertRaisesRegex(RuntimeError, "no answer text"):
-                    provider.generate("test", GenerationConfig("test"))
+            response = types.GenerateContentResponse(
+                usage_metadata=types.GenerateContentResponseUsageMetadata(prompt_token_count=100),
+                candidates=[types.Candidate(finish_reason="SAFETY")],
+            )
+            with patch.object(provider.client.models, "generate_content", return_value=response):
+                result = provider.generate("test", GenerationConfig("test"))
+            self.assertEqual(result.text, "")
+            self.assertEqual(result.usage.input_tokens, 100)
+            self.assertIn("SAFETY", result.finish_reason)
         finally:
             provider.close()

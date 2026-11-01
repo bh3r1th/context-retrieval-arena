@@ -111,15 +111,24 @@ class PipelineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             GenerationConfig("test", max_output_tokens=0)
 
-    def test_provider_errors_propagate(self):
+    def test_provider_errors_are_retained_and_later_queries_execute(self):
         class BrokenProvider(RecordingProvider):
             def generate(self, prompt, config):
-                raise RuntimeError("context limit exceeded")
+                if not self.prompts:
+                    self.prompts.append(prompt)
+                    raise RuntimeError("sensitive provider details")
+                return super().generate(prompt, config)
         with tempfile.TemporaryDirectory() as temp:
             pdf = Path(temp) / "sample.pdf"
             make_pdf(pdf, ["text"])
-            with self.assertRaisesRegex(RuntimeError, "context limit"):
-                run_baseline(ingest_pdf(pdf), [Question("q", "Q")], BrokenProvider(), GenerationConfig("test"))
+            manifest, rows = run_baseline(ingest_pdf(pdf), [Question("q", "Q", "42", [1]), Question("q2", "Q2")], BrokenProvider(), GenerationConfig("test"))
+            self.assertEqual(len(rows), 2)
+            self.assertEqual(rows[0]["status"], "error")
+            self.assertEqual(rows[0]["error_type"], "RuntimeError")
+            self.assertNotIn("sensitive", json.dumps(rows))
+            self.assertEqual(rows[0]["evaluation"]["exact_match"], 0)
+            self.assertIsNone(rows[0]["cost_usd"])
+            self.assertEqual(rows[1]["status"], "ok")
 
 
 if __name__ == "__main__":

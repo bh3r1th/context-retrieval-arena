@@ -39,8 +39,10 @@ class GenerationConfig:
             raise ValueError("model must be specified explicitly")
         if not 0 <= self.temperature <= 2:
             raise ValueError("temperature must be between 0 and 2")
-        if self.max_output_tokens < 1:
+        if type(self.max_output_tokens) is not int or self.max_output_tokens < 1:
             raise ValueError("max_output_tokens must be positive")
+        if self.seed is not None and type(self.seed) is not int:
+            raise ValueError("seed must be an integer")
 
 
 @dataclass(frozen=True)

@@ -28,8 +28,6 @@ class GeminiProvider:
             ),
         )
         text = response.text
-        if not text or not text.strip():
-            raise RuntimeError("Gemini returned no answer text; inspect model or safety settings")
         metadata = response.usage_metadata
         usage = Usage() if metadata is None else Usage(
             input_tokens=metadata.prompt_token_count,
@@ -39,4 +37,4 @@ class GeminiProvider:
             total_tokens=metadata.total_token_count,
         )
         finish = response.candidates[0].finish_reason if response.candidates else None
-        return Generation(text, usage, response.model_version, str(finish) if finish else None)
+        return Generation(text or "", usage, response.model_version, str(finish) if finish else None)

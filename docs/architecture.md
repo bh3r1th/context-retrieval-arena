@@ -18,8 +18,10 @@ Question -> retrieval strategy -> context + supplied page IDs
 pypdf without introducing a parsing service. `retrieval/full_context.py` supplies
 every page. `generation/` exposes a provider protocol and the optional official
 Gemini SDK adapter. `benchmark.py` orchestrates sequential queries. `evaluation/`
-reserves the scoring boundary; `reporting.py` writes machine-readable records.
-The CLI has independent `ingest` and `run` commands so extraction is reusable.
+computes lexical/page metrics; `pricing.py` estimates explicit flat token rates;
+`reporting.py` writes records, summaries, and Markdown comparisons.
+The CLI has independent `ingest`, `check`, `run`, and `report` commands so local
+validation and analysis run separately from paid generation.
 
 Future retrieval implementations should return context and physical page IDs
 using the existing context contract. Add a shared strategy protocol when the
@@ -27,7 +29,7 @@ second strategy exists. Index builders should persist versioned artifacts keyed
 by document hash and indexing settings. Do not add a registry, service layer,
 vector database, orchestration framework, or multiple configuration systems yet.
 
-## Phase 1 — ingestion and full context (current)
+## Phase 1 — ingestion and full context (implemented; live validation pending)
 
 - Versioned page-text artifact, PDF hash, extraction timing, empty-page warnings.
 - All-page retrieval, shared prompt, configurable model/temperature/output/seed.
@@ -39,16 +41,19 @@ vector database, orchestration framework, or multiple configuration systems yet.
 
 ## Phase 2 — evaluation and experiment protocol
 
+Implemented: lexical exact match/token F1, supplied/cited page recall and citation
+precision, explicit flat USD pricing, failure-aware summaries, compatibility checks,
+and a local preflight command. A synthetic 151-page fixture exercises the CLI
+without paid calls. No real benchmark PDF or verified reference dataset is bundled.
+
+Remaining work:
+
 - Validate a 100–200-question reference dataset with supporting page/section evidence.
 - Decide answer metrics before comparing systems: normalized exact match for
   suitable questions, and rubric scoring for open answers. Persist rubric, judge
   model/version, raw judgments, and any human adjudication separately.
-- Measure retrieved-page recall and cited-page recall separately. Full context's
-  supplied-page recall is trivially complete; it does not demonstrate faithful use.
-- Add explicit price tables with currency/date/model, cached-input and reasoning
-  billing rules. Distinguish measured query cost from amortized preparation cost.
-- Aggregate accuracy, recall, latency distributions, usage and cost into a report;
-  retain failures and denominators, rather than dropping unsuccessful questions.
+- Verify live model-specific token/billing semantics and preparation amortization;
+  flat token estimates exclude storage fees and retries not reflected in usage.
 - Add a run configuration file only when repeated experiment settings justify it.
 
 ## Phase 3 — embedding RAG (dependency decision first)
@@ -78,7 +83,7 @@ vector database, orchestration framework, or multiple configuration systems yet.
 ## Scope limits
 
 No OCR, native multimodal PDF comparison, distributed execution, async concurrency,
-automatic judge, pricing assumptions, chunking, embeddings, or tree index in phase 1.
+automatic judge, built-in prices, chunking, embeddings, or tree index yet.
 The text ingestion artifact is the common source for the current baseline; future
 strategies must document any input-representation differences as experiment variables.
 Keep the package independently runnable without managed-cloud-specific tooling.
