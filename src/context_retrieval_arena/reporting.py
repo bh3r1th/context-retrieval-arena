@@ -31,6 +31,7 @@ def summarize(manifest: dict, rows: list[dict]) -> dict:
         "ok": sum(row["status"] == "ok" for row in rows),
         "error": sum(row["status"] == "error" for row in rows),
         "incomplete": sum(row["status"] == "incomplete" for row in rows),
+        "unanswerable_questions": sum(not row.get("answerable", True) for row in rows),
         "query_seconds_mean": mean(latencies), "query_seconds_median": median(latencies),
         "query_seconds_p95": latencies[math.ceil(0.95 * len(latencies)) - 1],
         "extraction_seconds": manifest["extraction_seconds"],
@@ -105,6 +106,11 @@ def compare_runs(paths: list[Path]) -> list[dict]:
         normalized = [{"id": row["question_id"], "question": row["question"],
                        "reference_answer": row["reference_answer"],
                        "evidence_pages": row["reference_evidence_pages"]} for row in rows]
+        for record, row in zip(normalized, rows):
+            if type(row.get("answerable", True)) is not bool:
+                raise ValueError("Result answerable labels must be boolean")
+            if not row.get("answerable", True):
+                record["answerable"] = False
         digest = hashlib.sha256(json.dumps(normalized, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
         if digest != manifest["dataset_sha256"]:
             raise ValueError("Result questions/references do not match the dataset fingerprint")

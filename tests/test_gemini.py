@@ -15,6 +15,23 @@ except ModuleNotFoundError:
 
 @unittest.skipUnless(SDK_INSTALLED, "optional Gemini extra not installed")
 class GeminiTests(unittest.TestCase):
+    def test_token_count_and_model_limits_use_sdk_without_generation(self):
+        from google.genai import types
+
+        provider = GeminiProvider("offline-test-key")
+        try:
+            with patch.object(provider.client.models, "count_tokens", return_value=types.CountTokensResponse(total_tokens=123)) as count, patch.object(provider.client.models, "get", return_value=types.Model(input_token_limit=1000, output_token_limit=200)), patch.object(provider.client.models, "generate_content") as generate:
+                self.assertEqual(provider.model_limits("test"), (1000, 200))
+                self.assertEqual(provider.count_tokens("exact prompt", "test"), 123)
+                count.assert_called_once_with(model="test", contents="exact prompt")
+                generate.assert_not_called()
+            with patch.object(provider.client.models, "count_tokens", return_value=types.CountTokensResponse()), self.assertRaises(ValueError):
+                provider.count_tokens("test", "test")
+            with patch.object(provider.client.models, "get", return_value=types.Model()), self.assertRaises(ValueError):
+                provider.model_limits("test")
+        finally:
+            provider.close()
+
     def test_sdk_config_and_usage_mapping(self):
         from google.genai import types
 

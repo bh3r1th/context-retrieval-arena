@@ -18,6 +18,11 @@ Run `uv run --no-sync python -m unittest discover -s tests -v`.
   incompatible runs, duplicates/missing results, model drift, no overwrite.
 - CLI integration: a generated 151-page PDF through ingest, check, fake-provider
   run, and report. This is a synthetic fixture, not a realistic benchmark.
+- Real PDF pilot: stored document/dataset hashes, every evidence quotation against
+  its cited physical page, arithmetic answers, and unanswerable validation.
+- Remote token-count preflight: exact generation-prompt matching, no answer calls,
+  model input/output limits, output reserve, missing metadata and artifact safety;
+  SDK calls are mocked. No live context-fit claim is made.
 
 Run `cra check` on the selected PDF artifact and dataset before live generation.
 Its JSON separates errors, warnings, required manual checks and unverified live

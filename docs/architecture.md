@@ -44,7 +44,11 @@ vector database, orchestration framework, or multiple configuration systems yet.
 Implemented: lexical exact match/token F1, supplied/cited page recall and citation
 precision, explicit flat USD pricing, failure-aware summaries, compatibility checks,
 and a local preflight command. A synthetic 151-page fixture exercises the CLI
-without paid calls. No real benchmark PDF or verified reference dataset is bundled.
+without paid calls. The repository also bundles a real 408-page SEC PDF and a
+20-question assistant source-checked pilot with evidence quotations and three
+unanswerable controls; independent human adjudication is pending. The `tokens`
+command implements provider token-count/model-limit preflight, tested offline with
+mocks. No live counting or generation has been performed.
 
 Remaining work:
 

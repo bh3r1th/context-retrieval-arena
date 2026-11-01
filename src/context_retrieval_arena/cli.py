@@ -15,6 +15,7 @@ from .checks import check_inputs
 from .ingestion import ingest_pdf
 from .models import Document, GenerationConfig, Page
 from .pricing import Pricing
+from .preflight import count_prompts
 from .reporting import compare_runs, write_results, write_summary
 
 
@@ -73,6 +74,14 @@ def _main() -> None:
     run.add_argument("--seed", type=int)
     run.add_argument("--pricing", type=Path, help="Explicit flat USD rates as JSON; no default prices")
     run.add_argument("--require-references", action="store_true")
+    tokens = commands.add_parser("tokens", help="Count full prompts via Gemini; no answer generation (uploads document text)")
+    tokens.add_argument("--document", required=True, type=Path)
+    tokens.add_argument("--questions", required=True, type=Path)
+    tokens.add_argument("--model", required=True)
+    tokens.add_argument("--output", required=True, type=Path, help="New JSON file")
+    tokens.add_argument("--max-output-tokens", type=int, default=2048)
+    tokens.add_argument("--temperature", type=float, default=0.0)
+    tokens.add_argument("--seed", type=int)
     check = commands.add_parser("check", help="Validate local document/dataset without API calls")
     check.add_argument("--document", required=True, type=Path)
     check.add_argument("--questions", required=True, type=Path)
@@ -117,13 +126,14 @@ def _main() -> None:
             raise SystemExit(1)
         return
     if args.output.exists():
-        parser.error("Output already exists; choose a new run directory")
+        parser.error("Output already exists; choose a new path")
     config = GenerationConfig(args.model, args.temperature, args.max_output_tokens, args.seed)
     document = load_document(args.document)
     questions = load_questions(args.questions.read_text(encoding="utf-8"), len(document.pages))
-    if args.require_references and not check_inputs(document, questions, 1, True)["passed"]:
-        parser.error("Every question requires a reference answer and nonempty evidence_pages")
-    pricing = Pricing(**json.loads(args.pricing.read_text(encoding="utf-8"))) if args.pricing else None
+    if getattr(args, "require_references", False) and not check_inputs(document, questions, 1, True)["passed"]:
+        parser.error("Reference answers are required; answerable questions require evidence_pages")
+    pricing_path = getattr(args, "pricing", None)
+    pricing = Pricing(**json.loads(pricing_path.read_text(encoding="utf-8"))) if pricing_path else None
     if pricing and pricing.model != config.model:
         parser.error("Pricing model must exactly match --model")
     provenance = code_provenance()
@@ -136,6 +146,24 @@ def _main() -> None:
         provider = GeminiProvider(key)
     except ImportError:
         parser.error("Install the optional provider: uv sync --extra gemini --locked")
+    if args.command == "tokens":
+        try:
+            try:
+                result = count_prompts(document, questions, provider, config)
+            except Exception as exc:
+                # SDK exceptions can include sensitive request details.
+                parser.exit(1, f"Token preflight failed ({type(exc).__name__}); no answers generated.\n")
+        finally:
+            provider.close()
+        result["provider_sdk_version"] = version("google-genai")
+        result["code"] = provenance
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        with args.output.open("x", encoding="utf-8") as stream:
+            stream.write(json.dumps(result, indent=2, allow_nan=False) + "\n")
+        print(f"Counted {len(questions)} prompts; passed={result['passed']}; saved {args.output}")
+        if not result["passed"]:
+            raise SystemExit(1)
+        return
     try:
         manifest, rows = run_baseline(document, questions, provider, config, pricing)
     finally:

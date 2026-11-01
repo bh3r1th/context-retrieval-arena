@@ -38,6 +38,10 @@ The baseline sends **extracted text**, not native PDF bytes or page images.
 
 ## Run full context
 
+The [20-question SEC pilot](data/datasets/sec-regulation-best-interest-2018/README.md)
+and [pilot runbook](docs/pilot-runbook.md) are included. The pilot is source-checked
+by the assistant; independent human review and live generation remain pending.
+
 Set `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) securely in your environment. Keys are
 read at runtime and never saved in artifacts. The SDK uses
 `generativelanguage.googleapis.com`; network policy must allow it.
@@ -58,6 +62,10 @@ Create a JSON array of questions (see `examples/questions.json`):
 IDs must be unique. Evidence uses physical PDF pages, starting at 1, regardless of
 printed page labels. References are optional and never enter prompts. Missing
 references remain unscored; duplicate evidence pages and empty answers are rejected.
+
+Optional `answerable` defaults to true. Unanswerable controls must explicitly use
+`answerable: false` and `evidence_pages: []`. `--require-references` still requires
+their reference answers, but supporting pages are required only for answerable items.
 
 Validate inputs before spending API credits:
 
@@ -119,6 +127,11 @@ stay null. Summaries retain denominators, success/failure counts, token-count
 coverage, and latency mean/median/nearest-rank P95.
 
 ## Explicit pricing
+
+Before any later live generation, `cra tokens` can count each exact full-context
+prompt through Gemini and check reported model limits with an output reserve.
+It uploads document text and requires credentials/network access; it never generates
+answers. See [the pilot runbook](docs/pilot-runbook.md). It has not been run live.
 
 Cost defaults to null, not zero. Add `--pricing /path/to/rates.json` with this schema:
 

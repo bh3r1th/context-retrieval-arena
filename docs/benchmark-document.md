@@ -60,8 +60,13 @@ table-containing pages; the table of contents at physical page 4 was also render
 and inspected. Extraction completed in about 12.8 seconds on the current machine.
 These checks do not constitute a full visual/table-accuracy audit.
 
-Next: create 10–20 manually verified pilot questions with physical page evidence,
-inspect tables used by those questions, then run `cra check --require-references`.
-Token count and context-window fit must be measured for the chosen Gemini model
-before a paid full-context run. No token estimate, live generation, or evaluation
-score is claimed by this document selection.
+A [20-question pilot](../data/datasets/sec-regulation-best-interest-2018/README.md)
+now includes physical page evidence and a separate quotation audit. The assistant
+checked supporting source text and rendered numerical table pages 229/230;
+independent human adjudication remains pending. The real PDF and pilot pass
+`cra check --require-references`, with only the expected pilot-size warning.
+
+Next: follow [the pilot runbook](pilot-runbook.md) for human review and later Gemini
+token counting. Context fit must be measured for the selected model before a paid
+run. The current authorized API budget is zero. No live token count, generation,
+or answer-quality evaluation score is claimed.

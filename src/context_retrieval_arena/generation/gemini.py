@@ -14,6 +14,19 @@ class GeminiProvider:
     def close(self) -> None:
         self.client.close()
 
+    def count_tokens(self, prompt: str, model: str) -> int:
+        response = self.client.models.count_tokens(model=model, contents=prompt)
+        if type(response.total_tokens) is not int or response.total_tokens < 1:
+            raise ValueError("Provider returned no valid prompt token count")
+        return response.total_tokens
+
+    def model_limits(self, model: str) -> tuple[int, int]:
+        info = self.client.models.get(model=model)
+        values = info.input_token_limit, info.output_token_limit
+        if any(type(value) is not int or value < 1 for value in values):
+            raise ValueError("Provider did not return valid input/output limits")
+        return values
+
     def generate(self, prompt: str, config: GenerationConfig) -> Generation:
         from google.genai import types
 

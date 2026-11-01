@@ -1,0 +1,183 @@
+[
+  {
+    "id": "regbi-pilot-01",
+    "question": "What is the public-comment deadline specified in this 2018 Regulation Best Interest proposal?",
+    "reference_answer": "August 7, 2018.",
+    "evidence_pages": [
+      1
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-02",
+    "question": "On what date is this Regulation Best Interest proposal dated in its closing signature block?",
+    "reference_answer": "April 18, 2018.",
+    "evidence_pages": [
+      408
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-03",
+    "question": "In this proposal, when does the best interest obligation apply, and whose interests must not be placed ahead of the retail customer?",
+    "reference_answer": "It applies when a broker-dealer or associated natural person recommends a securities transaction or investment strategy to a retail customer, at the time the recommendation is made; their financial or other interests must not be placed ahead of the customer.",
+    "evidence_pages": [
+      405
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-04",
+    "question": "How does the proposed rule define a retail customer?",
+    "reference_answer": "A person or legal representative who receives a securities transaction or investment strategy recommendation from a broker-dealer or associated natural person and uses it primarily for personal, family, or household purposes.",
+    "evidence_pages": [
+      407
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-05",
+    "question": "Under the proposed Disclosure Obligation, when and in what form must material relationship facts and conflicts be disclosed?",
+    "reference_answer": "In writing, prior to or at the time of the recommendation.",
+    "evidence_pages": [
+      97
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-06",
+    "question": "Does this proposal supply a formal definition of best interest, or say that compliance depends on particular facts and circumstances?",
+    "reference_answer": "It does not propose to define best interest at this time; the determination turns on the facts and circumstances of the recommendation, customer, and satisfaction of the specific obligations.",
+    "evidence_pages": [
+      52
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-07",
+    "question": "Does the proposal require searching every possible security or always recommending the cheapest security? Explain when recommending a more expensive alternative would fail the Care Obligation.",
+    "reference_answer": "No. It does not require searching all possible securities or always selecting the least expensive option. Reasonably available alternatives offered by the broker-dealer should be considered. A higher cost needs justification by other characteristics and the customer profile; choosing a costlier otherwise identical reasonably available security would fail the Care Obligation.",
+    "evidence_pages": [
+      54,
+      56,
+      57
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-08",
+    "question": "Do the proposed Conflict of Interest Obligations apply to associated natural persons in the same way as the Disclosure and Care Obligations?",
+    "reference_answer": "No. The Conflict of Interest Obligations apply solely to the broker-dealer entity; the Disclosure and Care Obligations apply to the broker-dealer and associated natural persons.",
+    "evidence_pages": [
+      166,
+      167
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-09",
+    "question": "How does the proposal distinguish the treatment of material conflicts generally from material conflicts arising from financial incentives?",
+    "reference_answer": "For material conflicts generally, policies must identify and at least disclose, or eliminate, them. For material conflicts arising from financial incentives, policies must identify and disclose and mitigate, or eliminate, them; disclosure alone is not sufficient.",
+    "evidence_pages": [
+      406,
+      167
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-10",
+    "question": "Under the proposed Care Obligation, is a series of transactions acceptable merely because each transaction is in the customer's best interest in isolation?",
+    "reference_answer": "No. The broker-dealer must reasonably believe the series is not excessive and is in the customer's best interest when taken together in light of the investment profile.",
+    "evidence_pages": [
+      133
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-11",
+    "question": "In Table 1 Panel A, what are the totals for registered broker-dealers, dual-registered broker-dealers, assets, and customer accounts as of December 2017?",
+    "reference_answer": "3,841 broker-dealers; 366 dual-registered broker-dealers; $3,987 billion in assets; 132,348,098 customer accounts.",
+    "evidence_pages": [
+      229
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-12",
+    "question": "In Table 1 Panel B, what are the totals for retail broker-dealers, dual-registered broker-dealers, assets, and customer accounts as of December 2017?",
+    "reference_answer": "2,857 retail broker-dealers; 360 dual-registered broker-dealers; $3,624 billion in assets; 127,926,064 customer accounts.",
+    "evidence_pages": [
+      229
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-13",
+    "question": "Using Table 2, how many more retail broker-dealers report private placements of securities than mutual fund retailing?",
+    "reference_answer": "206 broker-dealers.",
+    "evidence_pages": [
+      230
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-14",
+    "question": "Using the Table 1 totals, what percentage of registered broker-dealers serve retail customers, rounded to one decimal place, and how does it compare with the Paperwork Reduction Act analysis?",
+    "reference_answer": "74.4%, matching the Paperwork Reduction Act estimate.",
+    "evidence_pages": [
+      229,
+      340
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-15",
+    "question": "What customer information and responsible-person identity would proposed Rule 17a-3(a)(25) record, and what retention trigger would proposed Rule 17a-4(e)(5) apply to those records?",
+    "reference_answer": "Record all information collected from and provided to the retail customer under Regulation Best Interest and the identity of any associated natural person responsible for the account. Retain records for at least six years after the earlier of account closure or when the information was collected, provided, replaced, or updated.",
+    "evidence_pages": [
+      197,
+      408
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-16",
+    "question": "Which four alternatives does the Economic Analysis identify under Reasonable Alternatives?",
+    "reference_answer": "Disclosure only; a principles-based standard of conduct; a fiduciary standard for broker-dealers; enhanced standards akin to the BIC Exemption conditions.",
+    "evidence_pages": [
+      324,
+      325
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-17",
+    "question": "In the small-entity discussion, what total-capital threshold is given for a broker-dealer, and what does total capital mean there?",
+    "reference_answer": "Less than $500,000; total capital means net worth plus subordinated liabilities.",
+    "evidence_pages": [
+      381
+    ],
+    "answerable": true
+  },
+  {
+    "id": "regbi-pilot-18",
+    "question": "What was the exact 2019 Commission vote tally for adopting the final Regulation Best Interest rule, according to this 2018 proposal?",
+    "reference_answer": "Cannot determine from this document.",
+    "evidence_pages": [],
+    "answerable": false
+  },
+  {
+    "id": "regbi-pilot-19",
+    "question": "What actual aggregate compliance cost did broker-dealers incur in calendar year 2025, according to this 2018 proposal?",
+    "reference_answer": "Cannot determine from this document.",
+    "evidence_pages": [],
+    "answerable": false
+  },
+  {
+    "id": "regbi-pilot-20",
+    "question": "According to this document, what is fictional retail customer Mira Solano's personal risk-tolerance score and exact account balance on April 18, 2018?",
+    "reference_answer": "Cannot determine from this document.",
+    "evidence_pages": [],
+    "answerable": false
+  }
+]

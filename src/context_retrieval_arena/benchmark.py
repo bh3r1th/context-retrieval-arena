@@ -27,6 +27,10 @@ def load_questions(text: str, page_count: int) -> list[Question]:
             q = Question(**item)
         except TypeError as exc:
             raise ValueError("Question has missing or unknown fields") from exc
+        if type(q.answerable) is not bool:
+            raise ValueError("answerable must be a boolean")
+        if not q.answerable and q.evidence_pages != []:
+            raise ValueError("Unanswerable questions require explicit empty evidence_pages")
         if not isinstance(q.id, str) or not q.id.strip() or q.id in seen:
             raise ValueError("Question IDs must be nonempty, unique strings")
         if not isinstance(q.question, str) or not q.question.strip():
@@ -45,6 +49,22 @@ def load_questions(text: str, page_count: int) -> list[Question]:
         seen.add(q.id)
         questions.append(q)
     return questions
+
+
+def question_record(question: Question) -> dict:
+    record = asdict(question)
+    # Preserve fingerprints of existing datasets that predate answerability labels.
+    if record["answerable"]:
+        del record["answerable"]
+    return record
+
+
+def fingerprints(document: Document, questions: list[Question]) -> dict:
+    def digest(value):
+        return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+    return {"document_sha256": document.source_sha256,
+            "document_content_sha256": digest([asdict(p) for p in document.pages]),
+            "dataset_sha256": digest([question_record(q) for q in questions])}
 
 
 def run_baseline(document: Document, questions: list[Question], provider: Provider,
@@ -80,6 +100,7 @@ def run_baseline(document: Document, questions: list[Question], provider: Provid
             "question": question.question,
             "reference_answer": question.reference_answer,
             "reference_evidence_pages": question.evidence_pages,
+            "answerable": question.answerable,
             "answer": text,
             "status": status,
             "error_type": error_type,
@@ -103,18 +124,12 @@ def run_baseline(document: Document, questions: list[Question], provider: Provid
         "generation": asdict(config),
         "prompt_version": PROMPT_VERSION,
         "python_version": platform.python_version(),
-        "document_sha256": document.source_sha256,
-        "document_content_sha256": hashlib.sha256(json.dumps(
-            [asdict(p) for p in document.pages], sort_keys=True, ensure_ascii=False
-        ).encode()).hexdigest(),
+        **fingerprints(document, questions),
         "question_count": len(questions),
         "page_count": len(document.pages),
         "evaluation_version": EVALUATION_VERSION,
         "extractor_version": document.extractor_version,
         "extraction_seconds": document.extraction_seconds,
-        "dataset_sha256": hashlib.sha256(json.dumps(
-            [asdict(q) for q in questions], sort_keys=True, ensure_ascii=False
-        ).encode()).hexdigest(),
         "run_seconds": perf_counter() - started,
         "cache_policy": "provider_default; uncontrolled",
         "measurement_scope": "query includes retrieval, prompt assembly, and generation; excludes ingestion and artifact I/O",

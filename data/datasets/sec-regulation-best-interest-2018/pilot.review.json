@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "document_sha256": "d8611d968d8ba9542ec775f43b80953b365758599701fd9c438383a6b82cd58f",
+  "dataset_file_sha256": "731d982993f33c106fa95dcb47a8965a55603922e75d1a03090991a919c8577e",
+  "review_status": "assistant source-checked; not independently human-adjudicated",
+  "page_numbering": "one-based physical PDF pages",
+  "visual_checks": [
+    229,
+    230
+  ],
+  "scope": "2018 proposed rule, not final rule or current law",
+  "items": [
+    {
+      "id": "regbi-pilot-01",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 1,
+          "quote": "DATES: Comments should be received on or before August 7, 2018. ADDRESSES: Comments may be submitted by any of the following methods: Electronic Comments: • Use the Commission’s In"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-02",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 408,
+          "quote": "By the Commission. Dated: April 18, 2018 Brent J. Fields Secretary"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-03",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 405,
+          "quote": "(a) Best Interest Obligation. (1) A broker, dealer, or a natural person who is an associated person of a broker or dealer, when making a recommendation of any securities transaction or investment strategy involving securities to a retail customer, shall act in the best interest of the retail customer at the time the recommendation is made, without placing the financial or other interest of the broker, dealer, or natural person who is an associated person of a broker or dealer making the recommendation ahead of the interest of the retail customer. (2) The best interest obligation in paragraph (a)(1) shall be satisfied if: (i) Disclosure Obligation. The broker, dealer, or natural person who is an associated person of a broker or dealer, prior to or at the time of such recommendation, reasona"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-04",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 407,
+          "quote": "(1) Retail Customer means a person, or the legal representative of such person, who: (A) Receives a recommendation of any securities transaction or investment strategy involving securities from a broker, dealer, or a natural person who is an associated person of a broker or dealer; and (B) Uses the recommendation primarily for personal, family, or household purposes. (2) Retail Customer Investment Profile includes, but is not limited to, the retail customer’s age, other investments, financial situation and needs, tax status, investment objectives, investment exper"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-05",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 97,
+          "quote": "The Commission is proposing the Disclosure Obligation, which would require a broker- dealer, or natural person who is an associated person of a broker or dealer “to, prior to or at the time of such recommendation, reasonably disclose to the retail customer, in writing, the material facts relating to the scope and terms of the relationship with the retail customer and all material conflicts of interest associated with the recommendation.” We believe that an important aspect of the broker-dealer’s best interest obligation is to facilitate its retail customers’ awareness of certain key information regarding their relationship with the"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-06",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 52,
+          "quote": "We are not proposing to define “best interest” at this time. Instead, we preliminarily believe that whether a broker-dealer acted in the best interest of the retail customer when making a recommendation will turn on the facts and circumstances of the particular recommendation and the particular retail customer, along with the facts and circumstances of how the four specific components of Regulation Best Interest are satisfied. Furthermore, in the discussion below and in our discussion of each of these specific obligations, we provide further guidance regarding our views of how a broker-dealer could act in the best interest of the retail customer, including how a broker-dealer could make a recommendation in the “best interest,” and how it compares to existing broker-dealer obligat"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-07",
+      "category": "cross_section",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 54,
+          "quote": "While to satisfy proposed Regulation Best Interest, a broker-dealer would not be required to analyze all possible securities, other products or investment strategies to find the single “best” security or investment strategy for the retail customer, broker-dealers generally should consider reasonably available alternatives offered by the broker-dealer as part of having a reasonable basis for making the recommendation, as required under the Care Obligation. Proposed Regulation Best Interest also would not necessarily obligate a broker-dealer to recommend the “least expensive” or the “least remunerative” security or investment strategy, provided the broker-"
+        },
+        {
+          "page": 56,
+          "quote": "We preliminarily believe that, in order to meet its Care Obligation, when a broker-dealer recommends a more expensive security or investment strategy over another reasonably available alternative offered by the broker-dealer, the broker-dealer would need to have a reasonable basis to believe that the higher cost of the security or strategy is justified (and thus nevertheless in the retail customer’s best interest) based on other factors (e.g., the product’s or strategy’s investment objectives, characteristics (including any special or unusual features), liquidity, risks and potential benefits, volatility and likely performance in a variety of market and economic conditions), in light of the retail customer’s investment profile. When a broker-dealer recommends a more remunerative security or investment strategy over another reasonably available alternative offered by the broker-dealer, the broker-dealer would need to have a reasonable basis to believe that—putting aside the broker-dealer’s financial incentives—the recommendation was in"
+        },
+        {
+          "page": 57,
+          "quote": "We preliminarily believe that under the Care Obligation, a broker-dealer could not have a reasonable basis to believe that a recommended security is in the best interest of a retail customer if it is more costly than a reasonably available alternative offered by the broker-dealer and the characteristics of the securities are otherwise identical, including any special or unusual features, liquidity, risks and potential benefits, volatility and likely performance.106 Further, it would be inconsistent with the Care Obligation for the broker-dealer to recommend the more expensive alternative for the customer, even if the broker-dealer had disclosed that the product was higher cost and had policies and procedures in place that were reasonably designed to mitigate the conflict under the Conflict of Interest Obligations, as the broker-dealer would not have complied with its Care Obligation, as the higher cost of the security of would not be justified by the security’s other characteristics in comparison to reasonably avai"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-08",
+      "category": "cross_section",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 166,
+          "quote": "289 Unlike the Disclosure and Care Obligations, which apply to a broker or dealer and to natural persons who are associated persons of a broker or dealer, the proposed Conflict of"
+        },
+        {
+          "page": 167,
+          "quote": "Interest Obligations apply solely to the broker or dealer entity, and not to the natural persons who are associated persons of a broker or dealer. For purposes of discussing the Conflict of Interest Obligations, the term “broker-dealer” refers only to the broker-dealer entity, and not to such individuals. While the Conflict of Interest Obligation applies only to the broker-dealer entity, the conflicts of in"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-09",
+      "category": "cross_section",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 406,
+          "quote": "(iii) Conflict of Interest Obligations. (A) The broker or dealer establishes, maintains, and enforces written policies and procedures reasonably designed to identify and at a minimum disclose, or eliminate, all material conflicts of interest that are associated with such recommendations. (B) The broker or dealer establishes, maintains, and enforces written policies and procedures reasonably designed to identify and disclose and mitigate, or eliminate, material conflicts of interest arising from financial incentives associated with such recommendations."
+        },
+        {
+          "page": 167,
+          "quote": "and procedures reasonably designed to identify, and disclose, or eliminate, all material conflicts of interest that are associated with recommendations covered by Regulation Best Interest; and (2) establish, maintain, and enforce written policies and procedures reasonably designed to identify, and disclose and mitigate, or eliminate, material conflicts of interest arising from financial incentives associated with such recommendations. We believe that requiring the establishment of such policies and procedures is critical to identifying and addressing conflicts of interest, whether through elimination or, at a minimum, disclosure (and mitigation, in the case of financial i"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-10",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 133,
+          "quote": "(3) have a reasonable basis to believe that a series of recommended transactions, even if in the retail customer’s best interest when viewed in isolation, is not excessive and is in the retail customer’s best interest when taken together in light of the retail customer’s investment profile. These proposed obligations would require a broker-dealer making a recommendation of a securities transaction or investment strategy involving securi"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-11",
+      "category": "table",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 229,
+          "quote": "Total 3,841 366 $3,987 bil. 132,348,098 Table 1, Panel B: Registered R"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-12",
+      "category": "table",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 229,
+          "quote": "Total 2,857 360 $3,624 bil. 127,926,064 As shown in the table below, b"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-13",
+      "category": "numerical",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 230,
+          "quote": "Private Placements of Securities 1,755 61.4% Mutual Fund Retailer 1,549 54.2% Broker or Dealer Retai"
+        }
+      ],
+      "reasoning_or_absence_rationale": "1,755 - 1,549 = 206. Business lines may overlap; this is a difference of reported counts, not disjoint populations."
+    },
+    {
+      "id": "regbi-pilot-14",
+      "category": "numerical",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 229,
+          "quote": "Total 3,841 366 $3,987 bil. 132,348,098 Table 1, Panel B: Registered Retail Broker-Dealers as of December 2017 Cumulative Broker-Dealer Total Assets and Customer Accounts Size of Broker-Dealer (Total Assets) Total Num. of BDs Num. of Dual- Registered BDs Cumulative Total Assets Cumulative Number of Customer Accounts > $50 billion 15 10 $2,647 bil. 40,964,945 $1 billion to $50 billion 70 19 $923 bil. 77,667,615 $500 million to $1 billion 23 7 $16 bil. 4,547,574 $100 million to $500 million 93 25 $20 bil. 1,957,981 $10 million to $100 million 372 94 $14 bil. 2,566,203 $1 million to $10 million 815 139 $3 bil. 216,158 < $1 million 1,469 66 $.4 bil. 5,588 Total 2,857 360 $3,624 bil. 127,926,064 As shown in the table below, based on responses to Form BD, broker-dealers’ most significant business lines include private placements of securities (61.4% of broker-dealers), retail sales of mutual funds (54.2%), acting as a broker or dealer retailing corporate equity securities over the counter (51.2%), acting as a broker or dealer retailing corporate debt securities (46.6%), acting as a broker or dealer selling variable contracts, such as life insurance or annuit"
+        },
+        {
+          "page": 340,
+          "quote": "As of December 31, 2017, 3,841 broker-dealers were registered with the Commission – either as standalone broker-dealers or as dually-registered entities. Based on data obtained from Form BR, the Commission preliminarily believes that approximately 74.4% of this population, or 2,857 broker-dealers have retail customers and therefore would likely be subject to Regulation Best Interest and the proposed amendments to Rules 17a-3(a)(25) and 17a-4(e)(5).532 2. Natural Persons Who Are Associated Persons of Broker-Dealers As with broker-dealers, proposed Regulation Best Interest would impose a best interest obligation on natural persons who are assoc"
+        }
+      ],
+      "reasoning_or_absence_rationale": "2,857 / 3,841 * 100 = 74.3817...%, rounded to 74.4%."
+    },
+    {
+      "id": "regbi-pilot-15",
+      "category": "cross_section",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 197,
+          "quote": "Accordingly, we are proposing to amend Rule 17a-3 to add a new paragraph (a)(25), which would require, for each retail customer to whom a recommendation of any securities transaction or investment strategy involving securities is or will be provided, a record of all information collected from and provided to the retail customer pursuant to Regulation Best Interest, as well as the identity of each natural person who is an associated person of a broker or dealer, if any, responsible for the account. The new paragraph would specify, however, that the neglect, refusal, or inability of a retail customer to provide or update any such information would excuse the broker-dealer from obtaining that information.338 336 See Exchange Act Section 17(a). 337 See Exchange Act Rule 17a-3(a)(17). 338 Rule 17a-3(a)(17) applies"
+        },
+        {
+          "page": 408,
+          "quote": "(5) All account record information required pursuant to § 240.17a-3(a)(17) and all records required pursuant to § 240.17a-3(a)(25), in each case until at least six years after the earlier of the date the account was closed or the date on which the information was collected, provided, replaced, or updated. * * * * * By the Commission. Dated: April 18, 2018 Brent J. Fields Secretary"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-16",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 324,
+          "quote": "In this section, a number of alternatives to proposed Regulation Best Interest are discussed, including: (1) a disclosure-only alternative; (2) a principles-based standard"
+        },
+        {
+          "page": 325,
+          "quote": "of conduct obligation; (3) a fiduciary standard for broker-dealers; and (4) enhanced standards akin to conditions of the BIC Exemption.510 1. Disclosure-Only Alternative As an alte"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-17",
+      "category": "factual",
+      "source_check": "assistant-reviewed extracted source text; independent human review pending",
+      "evidence": [
+        {
+          "page": 381,
+          "quote": "For purposes of a Commission rulemaking in connection with the RFA, a broker- dealer will be deemed a small entity if it: (1) had total capital (net worth plus subordinated liabilities) of less than $500,000 on the date in the prior fiscal year as of which its audited 645 As described in Section II.E. supra, the Commission is proposing to"
+        }
+      ],
+      "reasoning_or_absence_rationale": null
+    },
+    {
+      "id": "regbi-pilot-18",
+      "category": "unanswerable",
+      "source_check": "assistant-designed absence control; independent human review pending",
+      "evidence": [],
+      "reasoning_or_absence_rationale": "The document is a 2018 proposal, not the later adopting release; a later final-rule vote cannot be established from it."
+    },
+    {
+      "id": "regbi-pilot-19",
+      "category": "unanswerable",
+      "source_check": "assistant-designed absence control; independent human review pending",
+      "evidence": [],
+      "reasoning_or_absence_rationale": "The proposal contains prospective burden estimates, not realized 2025 expenditure data."
+    },
+    {
+      "id": "regbi-pilot-20",
+      "category": "unanswerable",
+      "source_check": "assistant-designed absence control; independent human review pending",
+      "evidence": [],
+      "reasoning_or_absence_rationale": "No individual customer profile or account record for this fictional person is supplied. A generic regulatory definition cannot answer this."
+    }
+  ]
+}

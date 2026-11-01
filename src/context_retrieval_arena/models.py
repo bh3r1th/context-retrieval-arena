@@ -25,6 +25,7 @@ class Question:
     question: str
     reference_answer: str | None = None
     evidence_pages: list[int] | None = None
+    answerable: bool = True
 
 
 @dataclass(frozen=True)
