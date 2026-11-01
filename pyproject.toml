@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "context-retrieval-arena"
+version = "0.1.0"
+description = "Reproducible experiments for long-document LLM question answering"
+requires-python = ">=3.11"
+dependencies = ["pypdf>=5,<7"]
+
+[project.optional-dependencies]
+gemini = ["google-genai>=1,<2"]
+
+[project.scripts]
+cra = "context_retrieval_arena.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
