@@ -22,6 +22,9 @@ Do not commit credentials, private PDFs, or generated artifacts.
 
 ## Extract a PDF
 
+The repository includes a [408-page SEC benchmark PDF and selection notes](docs/benchmark-document.md)
+under `data/documents/sec-regulation-best-interest-2018/`.
+
 ```sh
 uv run --no-sync cra ingest /path/to/document.pdf --output artifacts/document.json
 ```

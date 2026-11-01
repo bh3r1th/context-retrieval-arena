@@ -1,0 +1,29 @@
+{
+  "title": "Proposed Rule: Regulation Best Interest",
+  "publisher": "U.S. Securities and Exchange Commission",
+  "release": "34-83062",
+  "file_number": "S7-07-18",
+  "document_date": "2018-04-18",
+  "version_note": "Conformed to Federal Register version; historical proposed rule, not the final rule or current legal guidance",
+  "download_url": "https://raw.githubusercontent.com/VectifyAI/PageIndex/2e0f4dd35aa6a24c2dedfcf54678b0b0ad323ce8/examples/documents/Regulation%20Best%20Interest_proposed%20rule.pdf",
+  "mirror_repository": "VectifyAI/PageIndex",
+  "mirror_commit": "2e0f4dd35aa6a24c2dedfcf54678b0b0ad323ce8",
+  "downloaded_at": "2026-11-01T21:50:41.062605+00:00",
+  "pdf_sha256": "d8611d968d8ba9542ec775f43b80953b365758599701fd9c438383a6b82cd58f",
+  "file_bytes": 1803860,
+  "pages": 408,
+  "extracted_characters": 910070,
+  "whitespace_word_count": 127270,
+  "empty_text_pages": [],
+  "checks": {
+    "ingestion": "passed",
+    "source_pdf_hash": "passed",
+    "minimum_300_pages": "passed",
+    "manual_spot_checks": "TOC rendered at page 4; text inspected at pages 1, 2, 4, 101, 201, 301, 408 and table-containing pages 226-232",
+    "full_document_visual_audit": "not performed",
+    "model_token_count": "not measured",
+    "live_generation": "not run",
+    "verified_question_dataset": "not created"
+  },
+  "licensing_note": "SEC-authored U.S. federal government document; repository software license is not asserted to license third-party document content."
+}
