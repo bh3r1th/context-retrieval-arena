@@ -38,6 +38,12 @@ The baseline sends **extracted text**, not native PDF bytes or page images.
 
 ## Run full context
 
+For **Vertex AI using GCP credentials**, follow [the Cloud Shell guide](docs/gcp-cloud-shell.md).
+Both `run` and `tokens` accept `--backend vertex --project PROJECT_ID --location global`.
+Vertex uses Application Default Credentials, with no API key. The default backend
+is the Gemini Developer API described below. Explicit backend selection overrides
+any SDK environment toggle so runs do not silently switch services.
+
 The [20-question SEC pilot](data/datasets/sec-regulation-best-interest-2018/README.md)
 and [pilot runbook](docs/pilot-runbook.md) are included. The pilot is source-checked
 by the assistant; independent human review and live generation remain pending.

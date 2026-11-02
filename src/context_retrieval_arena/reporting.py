@@ -97,6 +97,7 @@ def compare_runs(paths: list[Path]) -> list[dict]:
         if any(key not in manifest for key in required):
             raise ValueError("Run manifest is missing comparison metadata")
         current = {key: manifest[key] for key in required}
+        current["provider_connection"] = manifest.get("provider_connection")
         if expected is not None and current != expected:
             raise ValueError("Runs differ in document, dataset, generation, prompt, evaluation, or pricing settings")
         expected = current

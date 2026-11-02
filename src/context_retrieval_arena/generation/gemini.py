@@ -6,10 +6,22 @@ from ..models import Generation, GenerationConfig, Usage
 class GeminiProvider:
     name = "gemini"
 
-    def __init__(self, api_key: str) -> None:
+    def __init__(self, api_key: str | None = None, *, vertexai: bool = False,
+                 project: str | None = None, location: str | None = None) -> None:
         from google import genai
 
-        self.client = genai.Client(api_key=api_key, http_options={"timeout": 120_000})
+        if vertexai:
+            if api_key or not project or not project.strip():
+                raise ValueError("Vertex AI requires a project and ADC, not an API key")
+            self.name = "vertex_ai"
+            self.connection = {"backend": "vertex", "project": project, "location": location or "global"}
+            self.client = genai.Client(vertexai=True, project=project, location=location or "global",
+                                       http_options={"timeout": 120_000})
+        else:
+            if not api_key or project or location:
+                raise ValueError("Developer API requires an API key and no project/location options")
+            self.connection = {"backend": "developer"}
+            self.client = genai.Client(vertexai=False, api_key=api_key, http_options={"timeout": 120_000})
 
     def close(self) -> None:
         self.client.close()

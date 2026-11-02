@@ -19,10 +19,18 @@ class TokenCounter(Protocol):
 
 
 def count_prompts(document: Document, questions: list[Question], provider: TokenCounter,
-                  config: GenerationConfig) -> dict:
+                  config: GenerationConfig, *, limits: tuple[int, int] | None = None,
+                  limits_source: str | None = None) -> dict:
     if not questions:
         raise ValueError("At least one question is required")
-    input_limit, output_limit = provider.model_limits(config.model)
+    if limits is not None:
+        if not limits_source or not limits_source.strip():
+            raise ValueError("Explicit model limits require a source URL or reference")
+        input_limit, output_limit = limits
+    else:
+        if limits_source is not None:
+            raise ValueError("limits_source requires explicit limits")
+        input_limit, output_limit = provider.model_limits(config.model)
     if any(type(n) is not int or n < 1 for n in (input_limit, output_limit)):
         raise ValueError("Provider model limits are missing or invalid")
     rows = []
@@ -39,6 +47,9 @@ def count_prompts(document: Document, questions: list[Question], provider: Token
     output_fits = config.max_output_tokens <= output_limit
     return {"schema_version": 1, "counted_at": datetime.now(timezone.utc).isoformat(),
             "provider": provider.name, "generation": asdict(config),
+            "provider_connection": getattr(provider, "connection", None),
+            "limits_source": limits_source if limits is not None else "provider model metadata",
+            "limits_verified_by_provider": limits is None,
             "prompt_version": PROMPT_VERSION, **fingerprints(document, questions),
             "input_token_limit": input_limit, "output_token_limit": output_limit,
             "output_limit_passed": output_fits,

@@ -82,6 +82,13 @@ def _main() -> None:
     tokens.add_argument("--max-output-tokens", type=int, default=2048)
     tokens.add_argument("--temperature", type=float, default=0.0)
     tokens.add_argument("--seed", type=int)
+    tokens.add_argument("--input-token-limit", type=int, help="Explicit model input limit, verified from provider documentation")
+    tokens.add_argument("--output-token-limit", type=int, help="Explicit model output limit")
+    tokens.add_argument("--limits-source", help="Source URL/reference for both explicit limits")
+    for command in (run, tokens):
+        command.add_argument("--backend", choices=("developer", "vertex"), default="developer")
+        command.add_argument("--project", help="Vertex project; defaults to GOOGLE_CLOUD_PROJECT")
+        command.add_argument("--location", help="Vertex location; defaults to GOOGLE_CLOUD_LOCATION or global")
     check = commands.add_parser("check", help="Validate local document/dataset without API calls")
     check.add_argument("--document", required=True, type=Path)
     check.add_argument("--questions", required=True, type=Path)
@@ -136,20 +143,39 @@ def _main() -> None:
     pricing = Pricing(**json.loads(pricing_path.read_text(encoding="utf-8"))) if pricing_path else None
     if pricing and pricing.model != config.model:
         parser.error("Pricing model must exactly match --model")
+    limits = None
+    if args.command == "tokens":
+        supplied = [args.input_token_limit is not None, args.output_token_limit is not None, bool(args.limits_source)]
+        if any(supplied):
+            if not all(supplied) or args.input_token_limit < 1 or args.output_token_limit < 1:
+                parser.error("Provide positive --input-token-limit and --output-token-limit together with --limits-source")
+            limits = (args.input_token_limit, args.output_token_limit)
+        if args.backend == "vertex" and limits is None:
+            parser.error("Vertex token preflight requires explicit input/output limits and their source; this SDK's Vertex model metadata omits limits")
+    project = args.project or os.environ.get("GOOGLE_CLOUD_PROJECT")
+    location = args.location or os.environ.get("GOOGLE_CLOUD_LOCATION") or "global"
+    if args.backend == "vertex" and (not project or not project.strip()):
+        parser.error("Vertex AI requires --project or GOOGLE_CLOUD_PROJECT")
+    if args.backend == "developer" and (args.project or args.location):
+        parser.error("--project and --location require --backend vertex")
     provenance = code_provenance()
     key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-    if not key:
+    if args.backend == "developer" and not key:
         parser.error("Set GEMINI_API_KEY or GOOGLE_API_KEY securely; never put keys in command arguments")
     try:
         from .generation.gemini import GeminiProvider
 
-        provider = GeminiProvider(key)
+        if args.backend == "vertex":
+            provider = GeminiProvider(vertexai=True, project=project, location=location)
+        else:
+            provider = GeminiProvider(key)
     except ImportError:
         parser.error("Install the optional provider: uv sync --extra gemini --locked")
     if args.command == "tokens":
         try:
             try:
-                result = count_prompts(document, questions, provider, config)
+                result = count_prompts(document, questions, provider, config,
+                                       limits=limits, limits_source=args.limits_source)
             except Exception as exc:
                 # SDK exceptions can include sensitive request details.
                 parser.exit(1, f"Token preflight failed ({type(exc).__name__}); no answers generated.\n")

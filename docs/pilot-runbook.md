@@ -15,6 +15,13 @@
 
 The commands below are instructions for later use, not evidence of live validation.
 
+For the selected **Vertex AI / Cloud Shell** workflow, use
+[gcp-cloud-shell.md](gcp-cloud-shell.md): project `project-ce0aa110-c8ea-4c1e-80b`,
+location `global`, and ADC via service-account impersonation. Add `--backend vertex`
+and project/location flags to the remote commands below. Vertex token counting also
+requires explicit documented limits and `--limits-source`; see that guide. The
+API-key instructions below apply only to the default Developer API backend.
+
 ## 1. Reproduce local validation
 
 From the repository root, install with `uv sync --locked --extra gemini` if needed.
@@ -62,6 +69,8 @@ hashes, model/settings, counting timestamp, SDK/code provenance and reported mod
 limits. It fails if counts or limits are missing/invalid, output exceeds the output
 limit, or any prompt plus the reserved output exceeds the reported input limit.
 The last rule is deliberately conservative; providers may expose separate limits.
+When explicit limits are supplied, their source is retained and the artifact marks
+them as not provider-verified; these values are not inferred from token counts.
 Failure artifacts with valid counts are retained and exit 1. API errors exit 1
 without claiming a successful preflight. Existing output paths are rejected.
 

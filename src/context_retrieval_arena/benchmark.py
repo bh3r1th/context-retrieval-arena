@@ -121,6 +121,7 @@ def run_baseline(document: Document, questions: list[Question], provider: Provid
         "created_at": datetime.now(timezone.utc).isoformat(),
         "strategy": "full_context",
         "provider": provider.name,
+        "provider_connection": getattr(provider, "connection", None),
         "generation": asdict(config),
         "prompt_version": PROMPT_VERSION,
         "python_version": platform.python_version(),
